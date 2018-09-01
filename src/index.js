@@ -15,6 +15,7 @@ ReactDOM.render(
         <Route path="/about" component={Welcome} />
         <Route path="/insurance/individual" component={Welcome} />
         <Route path="/insurance/group" component={Welcome} />
+        <Route path="/insurance/travel" component={Welcome} />
         <Route path="/contact" component={Welcome} />
       </App>
     </Fragment>

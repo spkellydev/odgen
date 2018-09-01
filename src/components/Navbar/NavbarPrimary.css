@@ -1,0 +1,9 @@
+.navbar-secondary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-secondary li:not(:last-child) > a::after {
+  content: "|";
+  padding-left: 25px;
+}

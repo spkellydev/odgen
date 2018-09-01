@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Nav, Navbar, NavItem, Glyphicon } from "react-bootstrap/lib";
+import Logo from "../../assets/icons/Ogden&Co_services.svg";
 import "./NavbarPrimary.css";
 
 export default class NavbarPrimary extends Component {
@@ -29,9 +30,11 @@ export default class NavbarPrimary extends Component {
   render() {
     return (
       <Fragment>
-        <Navbar fluid style={{ marginBottom: 0 }}>
+        <Navbar fluid>
           <Navbar.Header>
-            <Navbar.Brand>
+            <Navbar.Brand className="nav-logo">
+              <img src={Logo} alt="Ogden Insurance NJ" />
+
               <a href="/">Ogden Co.</a>
             </Navbar.Brand>
           </Navbar.Header>

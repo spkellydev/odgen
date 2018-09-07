@@ -1,0 +1,8 @@
+@import "vars";
+@import "mixins";
+
+@include headings() {
+  font-family: $serif;
+  letter-spacing: $pico;
+  margin: $xs 0;
+}

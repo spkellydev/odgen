@@ -1,0 +1,24 @@
+@import "../utils/vars";
+
+a.btn {
+  padding: $xs $sm;
+  margin: $xs $sm;
+  color: currentColor;
+  background: initial;
+  font-family: $serif;
+  display: inline-block;
+
+  &-white {
+    color: $blue;
+    background: $white;
+  }
+
+  &-shadow {
+    box-shadow: 0 $nano $nano -$pico $blue;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 $pico $pico $xs $blue;
+    }
+  }
+}

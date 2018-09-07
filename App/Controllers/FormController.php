@@ -2,27 +2,24 @@
 
 namespace App\Controllers;
 
-use App\Models\Form;
-
 class FormController
 {
     public function index($request, $response)
     {
-        $create = Form::create([
+        // $create = Form::create([
 
-            'fname' => 'jane',
+        //     'fname' => 'jane',
 
-            'lname' => 'doe',
+        //     'lname' => 'doe',
 
-            'email' => 'janedoe@cloudways.com',
+        //     'email' => 'janedoe@cloudways.com',
 
-            'age' => 33,
+        //     'age' => 33,
 
-            'smoker' => false,
+        //     'smoker' => false,
 
-            'zip' => '00000',
+        //     'zip' => '00000',
 
-        ]);
-        var_dump($create);
+        // ]);
     }
 }

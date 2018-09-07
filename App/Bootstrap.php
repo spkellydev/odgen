@@ -74,7 +74,7 @@ class Bootstrap
     protected function routes()
     {
         $this->app->get('/', function ($request, $response, $args) {
-            return $this->view->render($response, 'Hello.twig');
+            return $this->view->render($response, 'Welcome.twig');
         });
 
         $this->app->get('/create', 'FormController:index');

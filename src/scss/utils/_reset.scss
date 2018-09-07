@@ -1,8 +1,15 @@
+@import "mixins";
+
 a {
   text-decoration: none;
 }
 
 ul {
+  margin: 0;
+  padding: 0;
+}
+
+@include headings() {
   margin: 0;
   padding: 0;
 }

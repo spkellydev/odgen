@@ -1,4 +1,4 @@
-@import "../vars.scss";
+@import "../utils/vars.scss";
 
 .nav {
   font-family: $serif;
@@ -78,22 +78,5 @@
 
   &--secondary {
     height: $xl-5;
-
-    ul {
-      list-style: none;
-
-      li {
-        display: inline;
-
-        &:not(:last-child) > a::after {
-          content: "|";
-          padding: $xs;
-        }
-      }
-
-      @media only screen and (max-width: 440px) {
-        display: none;
-      }
-    }
   }
 }

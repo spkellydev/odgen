@@ -5,6 +5,8 @@
 **/
 
 // sizes
+$pico: 0.05rem;
+$nano: 0.5rem;
 $xs: 0.75rem; // 12px
 $sm: 0.875rem; // 14px
 $base: 1rem; // 16px
@@ -25,6 +27,8 @@ $serif: "Noto Serif JP", sans-serif;
       COLORS
     ----------
 **/
+$white: #ffffff;
 $gray: #f5f5f5;
 $gray-2: #666666;
 $blue: #1b4168;
+$blue-bright: #2f73b9;

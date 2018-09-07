@@ -3,8 +3,6 @@
 namespace App;
 
 use Slim;
-use \Psr\Http\Message\ResponseInterface as Response;
-use \Psr\Http\Message\ServerRequestInterface as Request;
 
 class Bootstrap
 {
@@ -18,7 +16,11 @@ class Bootstrap
     /** create application */
     public function __construct()
     {
-        $this->app = new \Slim\App();
+        $this->config();
+        $this->app = new \Slim\App([
+            'settings' => $this->config['slim'],
+        ]);
+
         $this->init();
     }
 
@@ -30,7 +32,7 @@ class Bootstrap
 
     protected function init(): void
     {
-        // $this->twig();
+        $this->twig();
         $this->routes();
     }
 
@@ -38,24 +40,43 @@ class Bootstrap
     {
         $container = $this->app->getContainer();
         $container['view'] = function ($c) {
-            $view = new Slim\View\Twig(__DIR__ . '/../views/');
-            $view->addExtension(new Slim\View\TwigExtension(
-                $c['router'],
-                $c['request']->getUri()
-            ));
+            $view = new \Slim\Views\Twig(__DIR__ . '/../templates/');
+            $router = $c->get('router');
+            $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
+            $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
+
+            return $view;
         };
     }
     /** create routes */
     protected function routes(): void
     {
-        $this->app->get('/', function (Request $request, Response $response, array $args) {
-            return $this->view->render(
-                $response,
-                'Hello.twig',
-                ['name' => 'sean']
-            });
-        );
-
+        $this->app->get('/', function ($request, $response, $args) {
+            return $this->view->render($response, 'Hello.twig');
+        });
     }
 
+    protected function config(): void
+    {
+        $configDir = __DIR__ . '/../config';
+        $configFiles = [
+            'system.php',
+            'user.php',
+        ];
+
+        $config = [
+            'slim' => [],
+        ];
+
+        foreach ($configFiles as $configFile) {
+            if (file_exists($configDir . $configFile)) {
+                $config = array_merge_recursive(
+                    $config,
+                    require $configDir . $configFile
+                );
+            }
+        }
+
+        $this->config = $config;
+    }
 }

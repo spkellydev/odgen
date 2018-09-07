@@ -13,7 +13,8 @@ class Bootstrap
      *  @var array
      */
     protected $config;
-    /** create application */
+
+    /** bootstrap application */
     public function __construct()
     {
         $this->config();
@@ -24,19 +25,27 @@ class Bootstrap
         $this->init();
     }
 
-    /** run SlimApp */
-    public function run(): void
+    /** run SlimApp
+     * @return void
+     */
+    public function run()
     {
         $this->app->run();
     }
 
-    protected function init(): void
+    /** intialize project features
+     * @return void
+     */
+    protected function init()
     {
         $this->twig();
         $this->routes();
     }
 
-    protected function twig(): void
+    /** load the Twig templating engine
+     * @return void
+     */
+    protected function twig()
     {
         $container = $this->app->getContainer();
         $container['view'] = function ($c) {
@@ -48,15 +57,21 @@ class Bootstrap
             return $view;
         };
     }
-    /** create routes */
-    protected function routes(): void
+    /** create routes for MVC structure
+     * @return void
+     */
+    protected function routes()
     {
         $this->app->get('/', function ($request, $response, $args) {
             return $this->view->render($response, 'Hello.twig');
         });
     }
 
-    protected function config(): void
+    /**
+     * Base project configurations for development
+     * @return void
+     */
+    protected function config()
     {
         $configDir = __DIR__ . '/../config';
         $configFiles = [

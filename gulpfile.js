@@ -6,6 +6,7 @@ var gulp = require("gulp"),
   plumber = require("gulp-plumber"),
   notify = require("gulp-notify"),
   sassLint = require("gulp-sass-lint"),
+  path = require("path"),
   sourcemaps = require("gulp-sourcemaps");
 // Temporary solution until gulp 4
 // https://github.com/gulpjs/gulp/issues/355
@@ -37,7 +38,8 @@ var onError = function(err) {
 };
 
 var sassOptions = {
-  outputStyle: "expanded"
+  outputStyle: "expanded",
+  includePaths: ["node_modules/mini.css/src"]
 };
 
 var prefixerOptions = {
@@ -54,10 +56,15 @@ gulp.task("styles", function() {
     .pipe(sourcemaps.init())
     .pipe(sass(sassOptions))
     .pipe(prefix(prefixerOptions))
-    .pipe(rename("main.css"))
+    .pipe(
+      rename(function(file) {
+        file.fileName = path.fileName;
+        file.extname = ".css";
+      })
+    )
     .pipe(cssmin())
     .pipe(rename({ suffix: ".min" }))
-    .pipe(gulp.dest("public/asssts/css"));
+    .pipe(gulp.dest("./public/assets/css"));
 });
 
 gulp.task("sass-lint", function() {

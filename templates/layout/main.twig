@@ -6,8 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Ogden Insurance & Consulting | Shrewsbury, New Jersey</title>
         <link href="{{ base_url() }}/assets/css/main.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Mukta|Noto+Serif+JP" rel="stylesheet">
     </head>
     <body>
+        {% include 'partials/navbar.twig' %}
         {% block content %}{% endblock %}
+        <p>Font size 16</p>
     </body>
 </html>

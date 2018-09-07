@@ -28,5 +28,9 @@
     "gulp-sass-lint": "^1.4.0",
     "gulp-sourcemaps": "^2.6.4",
     "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "mini.css": "^3.0.0",
+    "normalize.css": "^8.0.0"
   }
 }

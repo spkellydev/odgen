@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+
+  &--row {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &--space-around {
+    justify-content: space-around;
+  }
+
+  &--space-between {
+    justify-content: space-between;
+  }
+
+  &--vert-center {
+    align-items: center;
+  }
+
+  &--hort-center {
+    justify-content: center;
+  }
+}

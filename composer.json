@@ -1,0 +1,20 @@
+{
+  "name": "sean/ogden",
+  "type": "project",
+  "require": {
+    "slim/slim": "^3.10",
+    "twig/twig": "^2.0",
+    "slim/twig-view": "^2.4"
+  },
+  "authors": [
+    {
+      "name": "Sean Kelly",
+      "email": "spkellydev@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "App/"
+    }
+  }
+}

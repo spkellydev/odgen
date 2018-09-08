@@ -92,7 +92,7 @@ class Bootstrap
         $this->app->get('/insurance/group', 'InsuranceController:group');
         $this->app->get('/insurance/travel', 'InsuranceController:travel');
 
-        $this->app->get('/create', 'FormController:index');
+        $this->app->post('/api/create', 'FormController:create');
     }
 
     /**

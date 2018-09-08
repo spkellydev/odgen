@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Controllers\FormController;
 use Slim;
+use \Illuminate\Database\Capsule\Manager;
 
 class Bootstrap
 {
@@ -38,11 +40,20 @@ class Bootstrap
      */
     protected function init()
     {
+        $container = $this->app->getContainer();
+        $capsule = new Manager;
+        $capsule->addConnection($container['settings']['db']);
+
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
+
+        $this->db();
+        $this->controllers();
         $this->twig();
         $this->routes();
     }
 
-    /** load the Twig templating engine
+    /** Service Factory for Twig
      * @return void
      */
     protected function twig()
@@ -65,6 +76,28 @@ class Bootstrap
         $this->app->get('/', function ($request, $response, $args) {
             return $this->view->render($response, 'Hello.twig');
         });
+
+        $this->app->get('/create', 'FormController:index');
+    }
+
+    /**
+     * Service factory for Eloquent DB ORM
+     * @return void
+     */
+    protected function db()
+    {
+        $container = $this->app->getContainer();
+        $container['db'] = function ($c) use ($capsule) {
+            return $capsule;
+        };
+    }
+
+    protected function controllers()
+    {
+        $container = $this->app->getContainer();
+        $container['FormController'] = function ($c) {
+            return new FormController($c);
+        };
     }
 
     /**
@@ -73,7 +106,7 @@ class Bootstrap
      */
     protected function config()
     {
-        $configDir = __DIR__ . '/../config';
+        $configDir = __DIR__ . '/../config/';
         $configFiles = [
             'system.php',
             'user.php',

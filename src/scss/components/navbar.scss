@@ -3,8 +3,14 @@
 .nav {
   font-family: $serif;
 
+  svg {
+    position: relative;
+    width: 50px;
+    top: 20px;
+  }
+
   a {
-    &:hover {
+    &::hover {
       color: mix($blue, white, 50%);
     }
 
@@ -22,7 +28,9 @@
     .logo {
       font-weight: 900;
 
-      a {
+      a:not(svg) {
+        position: relative;
+        top: -20px;
         font-size: $xl-3;
         transition: all 0.5s ease;
 
@@ -81,6 +89,10 @@
           content: "|";
           padding: $xs;
         }
+      }
+
+      @media only screen and (max-width: 440px) {
+        display: none;
       }
     }
   }

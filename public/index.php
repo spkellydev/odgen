@@ -11,6 +11,7 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 require __DIR__ . '/../vendor/autoload.php';
+
 use App\Bootstrap as App;
 
 $app = new App();

@@ -55,7 +55,6 @@ gulp.task("styles", function() {
     .src("src/scss/main.scss")
     .pipe(plumber({ errorHandler: onError }))
     .pipe(sourcemaps.init())
-    .pipe(sassdoc())
     .pipe(sass(sassOptions))
     .pipe(prefix(prefixerOptions))
     .pipe(
@@ -77,8 +76,26 @@ gulp.task("sass-lint", function() {
     .pipe(sassLint.failOnError());
 });
 
+gulp.task("sassdoc", function() {
+  var options = {
+    dest: "docs",
+    verbose: true,
+    display: {
+      access: ["public", "private"],
+      alias: true,
+      watermark: true
+    },
+    groups: {
+      undefined: "Ungrouped"
+    },
+    basePath: "https://github.com/SassDoc/sassdoc"
+  };
+
+  return gulp.src("src/scss/**/*.scss").pipe(sassdoc(options));
+});
+
 gulp.task("watch", function() {
-  gulp.watch("src/scss/**/*.scss", ["styles"]);
+  gulp.watch("src/scss/**/*.scss", ["styles", "sassdoc"]);
 });
 
 // BUILD TASKS

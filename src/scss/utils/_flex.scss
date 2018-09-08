@@ -1,24 +1,25 @@
+@import "mixins/flex";
+
 .flex {
-  display: flex;
+  @include display-flex();
 
   &--row {
-    flex-wrap: wrap;
-    width: 100%;
+    @include flex-row();
   }
 
   &--space-around {
-    justify-content: space-around;
+    @include justify-content(space-around);
   }
 
   &--space-between {
-    justify-content: space-between;
+    @include justify-content(space-between);
   }
 
   &--vert-center {
-    align-items: center;
+    @include align-items(center);
   }
 
   &--hort-center {
-    justify-content: center;
+    @include justify-content(center);
   }
 }

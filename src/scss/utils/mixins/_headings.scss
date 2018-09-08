@@ -1,0 +1,47 @@
+// ----------------------------------------------------------------------
+
+// Headings
+
+// ----------------------------------------------------------------------
+
+////
+/// @author Sean Kelly
+/// @group typography
+////
+
+/// Dynamically create styles for headings.
+///
+/// @example scss - Inclusive Usage Sass
+///    @include headings() {
+///        css: here;
+///    }
+///
+/// @example scss - Inclusive Usage CSS Output
+///    h1, h2, h3, h4, h5, h6 {
+///        css: here;
+///    }
+/// @param {type} $1 [default none] - applies styles for h1
+/// @param {type} $2 [default none] - applies styles for h2
+/// @param {type} $3 [default none] - applies styles for h3
+/// @param {type} $4 [default none] - applies styles for h4
+/// @param {type} $5 [default none] - applies styles for h5
+/// @param {type} $6 [default none] - applies styles for h6
+///
+/// @example scss - Specific Usage Sass
+///    @include headings(1) {
+///        css: here;
+///    }
+///
+/// @example scss - Specific Usage CSS Output
+///    h1 {
+///        css: here;
+///    }
+///
+
+@mixin headings($from: 1, $to: 6) {
+  @for $i from $from through $to {
+    h#{$i} {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+// ----------------------------------------------------------------------
+
+// Flexbox
+
+// ----------------------------------------------------------------------
+
+////
+/// @author Sean Kelly
+/// @group flex
+////
+
+/// Dynamically flex layouts using flexbox.
+@mixin display-flex {
+  display: flex;
+}
+
+/// Dynamically flex layouts using flexbox.
+@mixin display-flex-inline-row {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+/// Wrapping rows at full width
+@mixin flex-row {
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/// justify content
+@mixin justify-content($justify) {
+  justify-content: $justify;
+}
+
+/// align content
+@mixin align-items($align) {
+  align-items: $align;
+}

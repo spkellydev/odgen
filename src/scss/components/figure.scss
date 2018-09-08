@@ -11,7 +11,7 @@ figure {
   h5 {
     font-size: $base;
     max-width: 80%;
-    margin: auto;
+    margin: $a;
 
     @media only screen and (max-width: 440px) {
       font-size: $xs;
@@ -24,7 +24,7 @@ figure {
     background: $blue-bright;
     padding: $xl;
     display: block;
-    margin: $nano auto;
+    margin: $nano $a;
   }
 }
 

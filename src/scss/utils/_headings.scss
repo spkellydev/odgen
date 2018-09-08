@@ -1,5 +1,5 @@
 @import "vars";
-@import "mixins";
+@import "mixins/headings";
 
 @include headings() {
   font-family: $serif;

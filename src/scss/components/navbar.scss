@@ -1,4 +1,5 @@
 @import "../utils/vars.scss";
+@import "../utils/mixins/flex";
 
 .nav {
   font-family: $serif;
@@ -41,9 +42,8 @@
     }
 
     .contact {
-      display: inline-flex;
+      @include display-flex-inline-row();
       font-family: $sans;
-      flex-direction: row;
 
       a.gray {
         &:first-child {

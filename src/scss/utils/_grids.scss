@@ -1,0 +1,48 @@
+@import "mixins/grid";
+@import "vars";
+
+.grid {
+  @include display-grid();
+
+  &--2 {
+    @include grid-template-columns($fr $fr);
+    @include grid-template-rows($a);
+
+    @include grid-column-media("440px", "720px", $fr);
+    @include grid-column-media("100px", "440px", $fr);
+  }
+
+  &--2-off {
+    @include grid-template-columns(45% $a);
+    @include grid-template-rows($a);
+
+    @include grid-column-media("440px", "720px", $fr);
+    @include grid-column-media("100px", "440px", $fr);
+  }
+
+  &--3 {
+    @include grid-template-columns($fr $fr $fr);
+    @include grid-template-rows($a);
+    grid-gap: $sm $xs;
+
+    @include grid-column-media("440px", "720px", $fr $fr);
+    @include grid-column-media("100px", "440px", $fr);
+  }
+
+  &--6 {
+    @include grid-template-columns($fr $fr $fr $fr $fr $fr);
+    @include grid-template-rows($a);
+
+    @include grid-column-media("440px", "720px", $fr $fr);
+    @include grid-column-media("100px", "440px", $fr $fr);
+  }
+
+  &--center {
+    @include grid-align-self($c);
+    @include grid-justify-self($c);
+  }
+
+  .column-contain--90 {
+    max-width: 90%;
+  }
+}

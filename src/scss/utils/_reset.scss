@@ -1,4 +1,4 @@
-@import "mixins";
+@import "mixins/headings";
 
 /** reset browser headings margin and padding  **/
 @include headings() {

@@ -7,6 +7,7 @@ var gulp = require("gulp"),
   notify = require("gulp-notify"),
   sassLint = require("gulp-sass-lint"),
   path = require("path"),
+  sassdoc = require("sassdoc"),
   sourcemaps = require("gulp-sourcemaps");
 // Temporary solution until gulp 4
 // https://github.com/gulpjs/gulp/issues/355
@@ -54,6 +55,7 @@ gulp.task("styles", function() {
     .src("src/scss/main.scss")
     .pipe(plumber({ errorHandler: onError }))
     .pipe(sourcemaps.init())
+    .pipe(sassdoc())
     .pipe(sass(sassOptions))
     .pipe(prefix(prefixerOptions))
     .pipe(

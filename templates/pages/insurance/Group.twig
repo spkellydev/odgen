@@ -1,7 +1,40 @@
 {% extends 'layout/main.twig' %}
 
 {% block content %}
-
-    <h1>Group</h1>
-
+    <div class="insurance--group">
+        <section class="hero">
+            <h1 class="hero--title-alternative">Group Services</h1>
+            <img src="{{ base_url() }}/assets/images/group-insurance-services-nj-alt.jpg" alt="Group Insurance Services">
+        </section>
+        <section class="alternative">
+            <article class="p-b grid grid--2">
+                <div class="p-b">
+                    <h2 class="border--alternative border--heading">Get Your Decision Makers Back to Work</h2>
+                    <br/>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem dolores vitae quibusdam possimus sit maiores pariatur molestiae sed, in, facilis earum optio at repudiandae odio quos sint, tempora ipsum ullam.
+                    </p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem dolores vitae quibusdam possimus sit maiores pariatur molestiae sed, in, facilis earum optio at repudiandae odio quos sint, tempora ipsum ullam.
+                    </p>
+                </div>
+                <div class="p-b">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem dolores vitae quibusdam possimus sit maiores pariatur molestiae sed, in, facilis earum optio at repudiandae odio quos sint, tempora ipsum ullam.
+                    </p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem dolores vitae quibusdam possimus sit maiores pariatur molestiae sed, in, facilis earum optio at repudiandae odio quos sint, tempora ipsum ullam.
+                    </p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    </p>
+                </div>
+            </article>
+        </section>
+        <div class="alternative">{% include 'partials/services.twig' %}</div>
+        <section class="secondary p-t insurance--quote">
+            <div class="contain-50 p-t text-center">
+                <h3 class="border--secondary p-t">Coverage When Your Employees Need it Most</h3>
+            </div>
+            <div class="grid grid--2 p-b">
+                <img src="{{ base_url() }}/assets/images/group-insurance-quote-nj-alt.jpg" alt="Get your Group Insurance Quote">
+                {% include 'partials/forms/quote.twig' %}
+            </div>
+        </section>
+    </div>
 {% endblock %}

@@ -1,0 +1,1 @@
+"use strict";function msieversion(){var r=window.navigator.userAgent,e=r.indexOf("MSIE ");return 0<e||navigator.userAgent.match(/Trident.*rv:11\./)?alert(parseInt(r.substring(e+5,r.indexOf(".",e)))):alert("otherbrowser"),!1}[1,2,3].map(function(r){return Math.pow(r,2)}),msieversion();

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Controllers\FormController;
+use App\Controllers\PageController;
 use Slim;
 use \Illuminate\Database\Capsule\Manager;
 
@@ -73,9 +74,8 @@ class Bootstrap
      */
     protected function routes()
     {
-        $this->app->get('/', function ($request, $response, $args) {
-            return $this->view->render($response, 'Welcome.twig');
-        });
+        $this->app->get('/', 'PageController:index');
+        $this->app->get('/about', 'PageController:about');
 
         $this->app->get('/create', 'FormController:index');
     }
@@ -95,6 +95,11 @@ class Bootstrap
     protected function controllers()
     {
         $container = $this->app->getContainer();
+
+        $container['PageController'] = function ($c) {
+            return new PageController($c);
+        };
+
         $container['FormController'] = function ($c) {
             return new FormController($c);
         };

@@ -1,0 +1,25 @@
+figure {
+  figcaption {
+    color: $white;
+    background: mix($blue, transparent, 30%);
+    width: 100%;
+    font-size: $xl-4;
+  }
+}
+
+.insurance-icons {
+  h5 {
+    font-size: $base;
+    max-width: 80%;
+    margin: auto;
+  }
+
+  img {
+    width: 75px;
+    height: 75px;
+    background: $blue-bright;
+    padding: $xl;
+    display: block;
+    margin: $nano auto;
+  }
+}

@@ -11,6 +11,14 @@ p {
   padding: $xl-3 $base;
 }
 
+.p-t {
+  padding: $base 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .lead {
   font-size: $xl-2;
   line-height: $xl-4;
@@ -19,4 +27,17 @@ p {
 .primary {
   color: $white;
   background: $blue-bright;
+}
+
+.secondary {
+  color: $blue;
+}
+
+.contain-50 {
+  width: 50%;
+  margin: auto;
+
+  hr {
+    width: 50%;
+  }
 }

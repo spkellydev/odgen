@@ -20,7 +20,12 @@
   font-size: $xl-3;
 }
 
-/** h4 = h4 font-size **/
-@include headings(4, 6) {
+/** h4 font-size **/
+@include headings(4) {
   font-size: $xl;
+}
+
+/** h5 - h6 font-size **/
+@include headings(5, 6) {
+  font-size: $lg;
 }

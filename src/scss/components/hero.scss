@@ -11,12 +11,22 @@
     right: 10vh;
     text-shadow: 0 0.3rem 0.3rem $black;
     text-transform: uppercase;
+
+    @media only screen and (max-width: 440px) {
+      top: 1vh;
+      right: 1vh;
+      font-size: $xl-3;
+    }
   }
 
   &--title-sub {
     font-size: $xl-2;
     display: block;
     text-transform: none;
+
+    @media only screen and (max-width: 440px) {
+      font-size: $base;
+    }
   }
 
   img {

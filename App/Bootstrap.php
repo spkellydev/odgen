@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Controllers\FormController;
+use App\Controllers\InsuranceController;
 use App\Controllers\PageController;
 use Slim;
 use \Illuminate\Database\Capsule\Manager;
@@ -68,6 +69,12 @@ class Bootstrap
 
             return $view;
         };
+
+        $container['notFoundHandler'] = function ($c) {
+            return function ($request, $response) use ($c) {
+                return $response->withRedirect('/404');
+            };
+        };
     }
     /** create routes for MVC structure
      * @return void
@@ -76,6 +83,14 @@ class Bootstrap
     {
         $this->app->get('/', 'PageController:index');
         $this->app->get('/about', 'PageController:about');
+        $this->app->get('/contact', 'PageController:contact');
+        $this->app->get('/privacy-policy', 'PageController:privacy');
+        $this->app->get('/404', 'PageController:notFound');
+
+        $this->app->get('/insurance', 'InsuranceController:index');
+        $this->app->get('/insurance/individual', 'InsuranceController:individual');
+        $this->app->get('/insurance/group', 'InsuranceController:group');
+        $this->app->get('/insurance/travel', 'InsuranceController:travel');
 
         $this->app->get('/create', 'FormController:index');
     }
@@ -98,6 +113,10 @@ class Bootstrap
 
         $container['PageController'] = function ($c) {
             return new PageController($c);
+        };
+
+        $container['InsuranceController'] = function ($c) {
+            return new InsuranceController($c);
         };
 
         $container['FormController'] = function ($c) {

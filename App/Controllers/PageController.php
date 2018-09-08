@@ -23,4 +23,19 @@ class PageController
     {
         return $this->c['view']->render($response, 'pages/About.twig');
     }
+
+    public function contact(Request $request, Response $response, $args)
+    {
+        return $this->c['view']->render($response, 'pages/Contact.twig');
+    }
+
+    public function privacy(Request $request, Response $response, $args)
+    {
+        return $this->c['view']->render($response, 'pages/Privacy.twig');
+    }
+
+    public function notFound(Request $request, Response $response, $args)
+    {
+        return $this->c['view']->render($response, 'pages/NotFound.twig');
+    }
 }

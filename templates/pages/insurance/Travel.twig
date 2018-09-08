@@ -5,6 +5,7 @@
         <section class="hero">
             <h1 class="hero--title">Travel Insurance<span class="hero--title-sub">Simple & Flexible Coverage</span></h1>
             <img src="{{ base_url() }}/assets/images/travel-insurance-services-nj.jpg" alt="Group Insurance Services">
+            {% include 'partials/btnQuote.twig' %}
         </section>
         <section class="alternative">
             <article class="p-b grid grid--2">
@@ -26,11 +27,6 @@
                 </div>
             </article>
         </section>
-        <section class="secondary p-t insurance--quote">
-            <div class="contain-50 p-t text-center">
-                <h3 class="border--secondary p-t">Benefits of Travel Insurance</h3>
-            </div>
-            <div class="grid grid--6 p-b"></div>
-        </section>
+        {% include 'partials/travel/benefits.twig' %}
     </div>
 {% endblock %}

@@ -20,6 +20,20 @@
     }
   }
 
+  &--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: $sm $xs;
+
+    @media only screen and (max-width: 720px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media only screen and (max-width: 440px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
   &--6 {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;

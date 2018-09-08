@@ -75,4 +75,39 @@
     object-fit: cover;
     object-position: bottom;
   }
+
+  .btn {
+    position: absolute;
+    z-index: 10;
+    color: $blue;
+    top: 40%;
+    right: 29%;
+    background: $white;
+    width: 6rem;
+
+    @media only screen and (max-width: 1366px) {
+      top: 35%;
+      left: 54%;
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1200px) {
+      top: 50%;
+      left: 42%;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 960px) {
+      top: 55%;
+      left: 20%;
+    }
+
+    @media only screen and (max-width: 720px) {
+      top: 70%;
+      left: 75%;
+    }
+
+    @media only screen and (max-width: 440px) {
+      top: 60%;
+      left: 55%;
+    }
+  }
 }

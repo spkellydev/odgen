@@ -33,11 +33,35 @@ p {
   color: $blue;
 }
 
+.alternative {
+  color: $blue-bright;
+  background: $gray;
+}
+
 .contain-50 {
   width: 50%;
   margin: auto;
 
   hr {
     width: 50%;
+  }
+}
+
+.border {
+  &--primary {
+    border-color: $white;
+  }
+
+  &--secondary {
+    border-color: $blue;
+  }
+
+  &--alternative {
+    border-color: $blue-bright;
+  }
+
+  &--heading {
+    width: auto;
+    border-bottom: $pico solid currentColor;
   }
 }

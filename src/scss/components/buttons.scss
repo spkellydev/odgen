@@ -14,7 +14,7 @@ a.btn {
   }
 
   &-shadow {
-    box-shadow: 0 $nano $nano -$pico $blue;
+    box-shadow: 0 $nano $sm -$pico mix($blue, $black, 50%);
     transition: all 0.5s ease-in-out;
 
     &:hover {

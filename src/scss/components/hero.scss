@@ -29,8 +29,50 @@
     }
   }
 
+  &--title-primary {
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    color: $blue-bright;
+    border-bottom: $pico solid $blue-bright;
+
+    @media only screen and (max-width: 440px) {
+      top: 5%;
+      left: 10%;
+      font-size: $xl-3;
+    }
+
+    @media only screen and (max-width: 720px) {
+      top: 5%;
+      left: 25%;
+      font-size: $xl-4;
+    }
+  }
+
+  &--title-alternative {
+    position: absolute;
+    top: 15%;
+    left: 38%;
+    color: $white;
+    text-shadow: $pico $pico $gray-2;
+    border-bottom: $pico solid $white;
+
+    @media only screen and (max-width: 440px) {
+      top: 5%;
+      left: 10%;
+      font-size: $xl-3;
+    }
+
+    @media only screen and (max-width: 720px) {
+      top: 5%;
+      left: 25%;
+      font-size: $xl-4;
+    }
+  }
+
   img {
-    max-height: 70vh;
+    max-height: 65vh;
     object-fit: cover;
+    object-position: bottom;
   }
 }

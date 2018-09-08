@@ -1,15 +1,43 @@
 @import "mixins";
 
+/** reset browser headings margin and padding  **/
+@include headings() {
+  margin: 0;
+  padding: 0;
+}
+
+/** remove underline from anchor tags **/
 a {
   text-decoration: none;
 }
 
-ul {
+/** remove margin and padding **/
+ul,
+p {
   margin: 0;
   padding: 0;
 }
 
-@include headings() {
+/** make image naturally responsive **/
+img {
+  width: 100%;
+}
+
+/** reset html5 fieldset **/
+fieldset {
+  display: block;
+  border: none;
+}
+
+label {
+  display: block;
+}
+
+figure {
   margin: 0;
-  padding: 0;
+  position: relative;
+
+  figcaption {
+    position: absolute;
+  }
 }

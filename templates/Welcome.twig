@@ -1,5 +1,35 @@
 {% extends 'layout/main.twig' %}
 
 {% block content %}
-    <h1>Hello</h1>
+    <section class="hero">
+        <h1 class="hero--title">Ogden & Co.
+            <span class="hero--title-sub">Insurance & Consulting Services</span></h1>
+        <img src="{{ base_url() }}/assets/images/ogden-insurance-nj.jpg" alt="Ogden Insurance & Co">
+    </section>
+    <section class="primary grid grid-2">
+        <article class="p-b column-contain--90">
+            <h2>Providing NJ Insurance For 30 Years</h2>
+            <br/>
+            <p>Licensed and serving clients in New Jersey, New York and Connecticut, OGDEN & CO. is an independent insurance brokerage providing customized, cost-effective insurance plan solutions for small to mid-size companies located in New Jersey, New York and Connecticut.
+            </p>
+            <p>Providing a service isn’t just about delivering what is expected and feeling as though the job is done. We pride ourselves in offering outstanding client service. For us, it is about creating relationships to meet our client’s needs.
+            </p>
+            <p>We work directly with our clients giving them the attention they deserve. Whether regarding administrative needs, a contractual issue, or a claim, we aim to respond to client requests within 24 hours. If your company is in need of a reliable resource for insurance plan options, allow our team at OGDEN & CO. to work with you to develop the right plan.
+            </p>
+        </article>
+        {% include 'partials/forms/quote.twig' %}
+    </section>
+    <section>
+        <article class="grid grid-2-off">
+            <figure>
+                <figcaption>Get Affordable Medical Insurance</figcaption>
+                <img src="{{ base_url() }}/assets/images/affordable-insurance.jpg" alt="Affordable Insurance in NJ">
+            </figure>
+            <div class="p-b">
+                <h3>Exclusive Options for the Perfect Plan</h4>
+                <hr/>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo minus est quidem sunt a accusantium praesentium explicabo esse dignissimos voluptatum repudiandae asperiores nesciunt perspiciatis rem culpa natus mollitia, vero eaque?</p>
+            </div>
+        </article>
+    </section>
 {% endblock %}

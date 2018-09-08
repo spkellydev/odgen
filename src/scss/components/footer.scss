@@ -1,15 +1,9 @@
 @import "../utils/vars";
 
 footer {
-  color: $white;
-  background: $blue-bright;
   text-align: center;
   min-height: $xl-4;
   padding: $lg $xs;
-
-  h3 {
-    font-size: $xl-4;
-  }
 
   ul.list-links {
     margin-top: $sm;

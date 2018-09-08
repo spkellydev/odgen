@@ -1,0 +1,53 @@
+.form {
+  &--quote {
+    background: $blue-gray;
+    color: $gray-2;
+    font-family: $sans;
+    padding: $base $base;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "heading heading heading heading" "contact contact health health" "footer footer footer footer";
+
+    .form-heading {
+      grid-area: heading;
+    }
+
+    .contact {
+      grid-area: contact;
+    }
+
+    .health {
+      grid-area: health;
+    }
+
+    .footer {
+      grid-area: footer;
+    }
+  }
+
+  legend {
+    color: $black;
+    min-width: 50%;
+  }
+
+  input:not([type="checkbox"]) {
+    width: 100%;
+    padding: $nano $nano;
+    border-radius: $pico;
+    border: 1px solid mix($gray, black, 50%);
+  }
+
+  label + input {
+    margin: $pico;
+  }
+
+  input[type="checkbox"] {
+    margin: $nano;
+  }
+
+  label {
+    align-self: center;
+  }
+}

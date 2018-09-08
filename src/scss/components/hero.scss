@@ -1,0 +1,26 @@
+@import "../utils/vars";
+
+.hero {
+  color: $white;
+  background: $blue;
+  position: relative;
+
+  &--title {
+    position: absolute;
+    top: 10vh;
+    right: 10vh;
+    text-shadow: 0 0.3rem 0.3rem $black;
+    text-transform: uppercase;
+  }
+
+  &--title-sub {
+    font-size: $xl-2;
+    display: block;
+    text-transform: none;
+  }
+
+  img {
+    max-height: 70vh;
+    object-fit: cover;
+  }
+}

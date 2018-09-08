@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  box-sizing: border-box;
+
+  &-2 {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+  }
+
+  &-2-off {
+    grid-template-columns: 45% auto;
+    grid-template-rows: auto;
+  }
+
+  &-center {
+    align-self: center;
+    justify-self: center;
+  }
+
+  .column-contain--90 {
+    max-width: 90%;
+  }
+}

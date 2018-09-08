@@ -4,5 +4,23 @@
 @include headings() {
   font-family: $serif;
   letter-spacing: $pico;
-  margin: $xs 0;
+}
+
+@include headings(1) {
+  font-size: $xl-5;
+}
+
+/** h3 font-size **/
+@include headings(2) {
+  font-size: $xl-3;
+}
+
+/** h3 font-size **/
+@include headings(3) {
+  font-size: $xl-3;
+}
+
+/** h4 = h4 font-size **/
+@include headings(4, 6) {
+  font-size: $xl;
 }

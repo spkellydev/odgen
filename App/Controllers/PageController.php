@@ -16,7 +16,9 @@ class PageController
 
     public function index(Request $request, Response $response, $args)
     {
-        return $this->c['view']->render($response, 'Welcome.twig');
+        return $this->c['view']->render($response, 'Welcome.twig', [
+            'token' => $_SESSION['token'],
+        ]);
     }
 
     public function about(Request $request, Response $response, $args)

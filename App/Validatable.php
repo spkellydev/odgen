@@ -62,4 +62,13 @@ class Validatable
         return (preg_match('/^[0-9]{5}(-[0-9]{4})?$/', $zipCode)) ? true : false;
     }
 
+    public function checkCSRFToken($token)
+    {
+        if ($token !== $_SESSION['token']) {
+            return false;
+        }
+
+        return true;
+    }
+
 }

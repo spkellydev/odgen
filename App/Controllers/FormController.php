@@ -30,20 +30,23 @@ class FormController extends Validatable
 
     public function create(Request $request, Response $response)
     {
-        $this->checkStringAsName($request->getParam('fname'));
-        $submission = new Form;
-        $submission->fname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('fname') : false;
-        $submission->lname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('lname') : false;
-        $submission->email = $this->checkEmail($request->getParam('email')) ? $request->getParam('email') : false;
-        $submission->age = $this->checkIntRange($request->getParam('age'), 18, 90) ? $request->getParam('age') : false;
-        $submission->smoker = $this->checkBoolean($request->getParam('smoker')) ? $request->getParam('smoker') : null;
-        $submission->zip = $this->checkValidZipCode($request->getParam('zip')) ? $request->getParam('zip') : false;
+        if ($this->checkCSRFToken($request->token)) {
+            $submission = new Form;
+            $submission->fname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('fname') : false;
+            $submission->lname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('lname') : false;
+            $submission->email = $this->checkEmail($request->getParam('email')) ? $request->getParam('email') : false;
+            $submission->age = $this->checkIntRange($request->getParam('age'), 18, 90) ? $request->getParam('age') : false;
+            $submission->smoker = $this->checkBoolean($request->getParam('smoker')) ? $request->getParam('smoker') : null;
+            $submission->zip = $this->checkValidZipCode($request->getParam('zip')) ? $request->getParam('zip') : false;
 
-        if ($submission->fname && $submission->lname && $submission->email && $submission->age && $submission->zip && !is_null($submission->smoker)) {
-            $submission->save();
-            echo '{"success": {"text": "Submission received"}';
+            if ($submission->fname && $submission->lname && $submission->email && $submission->age && $submission->zip && !is_null($submission->smoker)) {
+                $submission->save();
+                echo '{"success": {"text": "Submission received"}';
+            } else {
+                echo '{"error": {"text": ' . $submission . '}';
+            }
         } else {
-            echo '{"error": {"text": ' . $submission . '}';
+            echo '{"error": {"text": "no token"}';
         }
 
     }

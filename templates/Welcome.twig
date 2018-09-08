@@ -17,7 +17,10 @@
             <p>We work directly with our clients giving them the attention they deserve. Whether regarding administrative needs, a contractual issue, or a claim, we aim to respond to client requests within 24 hours. If your company is in need of a reliable resource for insurance plan options, allow our team at OGDEN & CO. to work with you to develop the right plan.
             </p>
         </article>
-        {% include 'partials/forms/quote.twig' %}
+        {% include 'partials/forms/quote.twig' with {
+            csrf : token
+        }
+        only %}
     </section>
     <section>
         <article class="grid grid--2-off">

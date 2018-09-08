@@ -10,6 +10,11 @@ if (PHP_SAPI == 'cli-server') {
     }
 }
 
+session_start();
+if (empty($_SESSION['token'])) {
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+}
+
 require __DIR__ . '/../vendor/autoload.php';
 
 use App\Bootstrap as App;

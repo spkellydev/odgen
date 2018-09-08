@@ -43,11 +43,11 @@ class Bootstrap
     protected function init()
     {
         $container = $this->app->getContainer();
-        $capsule = new Manager;
-        $capsule->addConnection($container['settings']['db']);
+        $this->capsule = new Manager;
+        $this->capsule->addConnection($container['settings']['db']);
 
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
+        $this->capsule->setAsGlobal();
+        $this->capsule->bootEloquent();
 
         $this->db();
         $this->controllers();
@@ -101,6 +101,7 @@ class Bootstrap
      */
     protected function db()
     {
+        $capsule = $this->capsule;
         $container = $this->app->getContainer();
         $container['db'] = function ($c) use ($capsule) {
             return $capsule;

@@ -7,31 +7,31 @@
             <legend style="margin-left: 15px">Contact Information</legend>
             <div class="grid grid--2">
                 <label for="fname">First Name</label>
-                <input type="text" required="required" name="fname" placeholder="First Name">
+                <input type="text" id="fname" required="required" name="fname" placeholder="First Name">
                 <label for="lname">Last Name</label>
-                <input type="text" required="required" name="lname" placeholder="Last Name">
+                <input type="text" id="lname" required="required" name="lname" placeholder="Last Name">
                 <label for="email">Email Address</label>
-                <input type="text" required="required" name="email" placeholder="example@mail.com">
+                <input type="text" id="email" required="required" name="email" placeholder="example@mail.com">
                 <label for="company">Company (Optional)</label>
-                <input type="text" name="company" placeholder="Company">
+                <input type="text" id="company" name="company" placeholder="Company">
             </div>
         </fieldset>
         <fieldset class="health">
             <legend style="margin-left: 15px">Health Information</legend>
             <div class="grid grid--2">
                 <label for="age">Your Age</label>
-                <input type="text" required="required" name="age" placeholder="64">
+                <input type="text" id="age" required="required" name="age" placeholder="64">
                 <label for="smoker">Smoker</label>
-                <input type="checkbox" name="smoker"/>
+                <input type="checkbox" id="smoker" name="smoker"/>
                 <label for="zip">Zip Code</label>
-                <input type="text" required="required" name="zip" placeholder="07702">
+                <input type="text" id="zip" required="required" name="zip" placeholder="07702">
             </div>
         </fieldset>
         <div class="footer">
             <fieldset class="terms">
                 <legend>Terms</legend>
                 <label for="agree">
-                    <input type="checkbox" required="required" name="agree"/>
+                    <input type="checkbox" id="agree" required="required" name="agree"/>
                     Please agree that we may use your personal data to contact you to discuss a quote, as explained in our
                     <a href="/privacy-policy">Privacy Policy</a>.</label>
                 <input type="hidden" name="token" value="{{ csrf }}">

@@ -6,7 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Ogden Insurance & Consulting | Shrewsbury, New Jersey</title>
         <link href="{{ base_url() }}/assets/css/main.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Mukta|Noto+Serif+JP" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Mukta{{ '|'|url_encode }}Noto+Serif+JP" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ base_url() }}/assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ base_url() }}/assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ base_url() }}/assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="{{ base_url() }}/assets/favicon/site.webmanifest">
+        <link rel="mask-icon" href="{{ base_url() }}/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
     </head>
     <body>
         {% include 'partials/navbar.twig' %}

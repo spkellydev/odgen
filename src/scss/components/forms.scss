@@ -5,7 +5,6 @@
     font-family: $sans;
     padding: $base $base;
     display: grid;
-    height: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: "heading heading heading heading" "contact contact health health" "footer footer footer footer";

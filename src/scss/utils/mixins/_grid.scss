@@ -54,3 +54,21 @@
   -ms-grid-column-align: $value;
   justify-self: $value;
 }
+
+/// adds autoprefixing support for columns. IE with grid children
+@mixin grid-col-child() {
+  @for $i from 1 to 7 {
+    .grid--child-#{$i} {
+      grid-column: $i;
+    }
+  }
+}
+
+/// adds autoprefixing support for rows. IE with grid children
+@mixin grid-row-child() {
+  @for $i from 1 to 7 {
+    .grid--child-row-#{$i} {
+      grid-row: $i;
+    }
+  }
+}

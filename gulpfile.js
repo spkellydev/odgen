@@ -31,7 +31,8 @@ var sassOptions = {
 };
 
 var prefixerOptions = {
-  browsers: ["last 2 versions"]
+  browsers: [">1%"],
+  grid: true
 };
 
 // BUILD SUBTASKS

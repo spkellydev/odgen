@@ -7,7 +7,7 @@
         <img src="{{ base_url() }}/assets/images/ogden-insurance-nj.jpg" alt="Ogden Insurance & Co">
     </section>
     <section aria-label="our-company" class="primary grid grid--2">
-        <article class="p-b column-contain--90">
+        <article class="p-b column-contain--90 grid--child-1">
             <h2>Providing NJ Insurance For 30 Years</h2>
             <br/>
             <p>Licensed and serving clients in New Jersey, New York and Connecticut, OGDEN & CO. is an independent insurance brokerage providing customized, cost-effective insurance plan solutions for small to mid-size companies located in New Jersey, New York and Connecticut.
@@ -18,17 +18,18 @@
             </p>
         </article>
         {% include 'partials/forms/quote.twig' with {
-            csrf : token
+            csrf : token,
+            grid: 2
         }
         only %}
     </section>
     <section aria-label="Afforable Medical Insurance">
         <article class="grid grid--2-off">
-            <figure>
+            <figure class="grid--child-1">
                 <figcaption class="p-t">Get Affordable Medical Insurance</figcaption>
                 <img src="{{ base_url() }}/assets/images/affordable-insurance.jpg" alt="Affordable Insurance in NJ">
             </figure>
-            <div class="p-b">
+            <div class="p-b grid--child-2">
                 <h3>Exclusive Options for the Perfect Plan</h4>
                 <hr/>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo minus est quidem sunt a accusantium praesentium explicabo esse dignissimos voluptatum repudiandae asperiores nesciunt perspiciatis rem culpa natus mollitia, vero eaque?</p>

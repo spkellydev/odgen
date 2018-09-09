@@ -8,7 +8,7 @@
         </section>
         <section class="alternative">
             <article class="p-b grid grid--2">
-                <div class="p-b">
+                <div class="p-b grid--child-1">
                     <h2 class="border--alternative border--heading">Get Your Decision Makers Back to Work</h2>
                     <br/>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem dolores vitae quibusdam possimus sit maiores pariatur molestiae sed, in, facilis earum optio at repudiandae odio quos sint, tempora ipsum ullam.
@@ -16,7 +16,7 @@
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem dolores vitae quibusdam possimus sit maiores pariatur molestiae sed, in, facilis earum optio at repudiandae odio quos sint, tempora ipsum ullam.
                     </p>
                 </div>
-                <div class="p-b">
+                <div class="p-b grid--child-2">
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem dolores vitae quibusdam possimus sit maiores pariatur molestiae sed, in, facilis earum optio at repudiandae odio quos sint, tempora ipsum ullam.
                     </p>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem dolores vitae quibusdam possimus sit maiores pariatur molestiae sed, in, facilis earum optio at repudiandae odio quos sint, tempora ipsum ullam.
@@ -32,8 +32,12 @@
                 <h3 class="border--secondary p-t">Coverage When Your Employees Need it Most</h3>
             </div>
             <div class="grid grid--2 p-b">
-                <img src="{{ base_url() }}/assets/images/group-insurance-quote-nj-alt.jpg" alt="Get your Group Insurance Quote">
-                {% include 'partials/forms/quote.twig' %}
+                <img class="grid--child-1" src="{{ base_url() }}/assets/images/group-insurance-quote-nj-alt.jpg" alt="Get your Group Insurance Quote">
+                {% include 'partials/forms/quote.twig' with {
+                    csrf : token,
+                    grid: 2
+                }
+                only %}
             </div>
         </section>
     </div>

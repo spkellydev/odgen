@@ -5,6 +5,8 @@ namespace App;
 use App\Controllers\FormController;
 use App\Controllers\InsuranceController;
 use App\Controllers\PageController;
+use App\Factories\HttpFactory;
+use App\Factories\TwigFactory;
 use Slim;
 use \Illuminate\Database\Capsule\Manager;
 
@@ -18,6 +20,8 @@ class Bootstrap
      */
     protected $config;
 
+    protected $container;
+
     /** bootstrap application */
     public function __construct()
     {
@@ -25,6 +29,8 @@ class Bootstrap
         $this->app = new \Slim\App([
             'settings' => $this->config['slim'],
         ]);
+
+        $this->container = $this->app->getContainer();
 
         $this->init();
     }
@@ -42,15 +48,13 @@ class Bootstrap
      */
     protected function init()
     {
-        $container = $this->app->getContainer();
         $this->capsule = new Manager;
-        $this->capsule->addConnection($container['settings']['db']);
-
+        $this->capsule->addConnection($this->container['settings']['db']);
         $this->capsule->setAsGlobal();
         $this->capsule->bootEloquent();
 
         $this->db();
-        $this->headers();
+        $this->http();
         $this->controllers();
         $this->twig();
         $this->routes();
@@ -61,21 +65,7 @@ class Bootstrap
      */
     protected function twig()
     {
-        $container = $this->app->getContainer();
-        $container['view'] = function ($c) {
-            $view = new \Slim\Views\Twig(__DIR__ . '/../templates/');
-            $router = $c->get('router');
-            $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
-            $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
-
-            return $view;
-        };
-
-        $container['notFoundHandler'] = function ($c) {
-            return function ($request, $response) use ($c) {
-                return $response->withRedirect('/404');
-            };
-        };
+        new TwigFactory($this->container, 'view');
     }
     /** create routes for MVC structure
      * @return void
@@ -105,8 +95,7 @@ class Bootstrap
     protected function db()
     {
         $capsule = $this->capsule;
-        $container = $this->app->getContainer();
-        $container['db'] = function ($c) use ($capsule) {
+        $this->container['db'] = function ($c) use ($capsule) {
             return $capsule;
         };
     }
@@ -118,17 +107,15 @@ class Bootstrap
      */
     protected function controllers()
     {
-        $container = $this->app->getContainer();
-
-        $container['PageController'] = function ($c) {
+        $this->container['PageController'] = function ($c) {
             return new PageController($c);
         };
 
-        $container['InsuranceController'] = function ($c) {
+        $this->container['InsuranceController'] = function ($c) {
             return new InsuranceController($c);
         };
 
-        $container['FormController'] = function ($c) {
+        $this->container['FormController'] = function ($c) {
             return new FormController($c);
         };
     }
@@ -161,12 +148,15 @@ class Bootstrap
     }
 
     /**
-     * Set application wide headers
+     * Set application wide http options
      * Example: CORS
      * @return void
      */
-    protected function headers()
+    protected function http()
     {
+        // create default 404 page
+        new HttpFactory($this->container, 'notFoundHandler');
+
         // add options for all available routes
         $this->app->options('/{routes:.+}', function ($request, $response, $args) {
             return $response;
@@ -180,6 +170,5 @@ class Bootstrap
                 ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
                 ->withHeader('Access-Control-Allow-Methods', 'GET, POST');
         });
-
     }
 }

@@ -89,7 +89,7 @@ class Bootstrap
         $this->app->get('/thank-you', 'PageController:thankYou');
         $this->app->get('/404', 'PageController:notFound');
 
-        $this->app->get('/insurance', 'InsuranceController:index');
+        $this->app->get('/insurance[/]', 'InsuranceController:index');
         $this->app->get('/insurance/individual', 'InsuranceController:individual');
         $this->app->get('/insurance/group', 'InsuranceController:group');
         $this->app->get('/insurance/travel', 'InsuranceController:travel');
@@ -142,7 +142,6 @@ class Bootstrap
         $configDir = __DIR__ . '/../config/';
         $configFiles = [
             'system.php',
-            'user.php',
         ];
 
         $config = [

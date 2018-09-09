@@ -1,12 +1,12 @@
 {% extends 'layout/main.twig' %}
 
 {% block content %}
-    <section class="hero">
+    <section aria-label="Nearby insurance company" class="hero">
         <h1 class="hero--title">Ogden & Co.
             <span class="hero--title-sub">Insurance & Consulting Services</span></h1>
         <img src="{{ base_url() }}/assets/images/ogden-insurance-nj.jpg" alt="Ogden Insurance & Co">
     </section>
-    <section class="primary grid grid--2">
+    <section aria-label="our-company" class="primary grid grid--2">
         <article class="p-b column-contain--90">
             <h2>Providing NJ Insurance For 30 Years</h2>
             <br/>
@@ -22,7 +22,7 @@
         }
         only %}
     </section>
-    <section>
+    <section aria-label="Afforable Medical Insurance">
         <article class="grid grid--2-off">
             <figure>
                 <figcaption class="p-t">Get Affordable Medical Insurance</figcaption>
@@ -37,7 +37,7 @@
             </div>
         </article>
     </section>
-    <section class="secondary p-t">
+    <section aria-label="insurance-services" class="secondary p-t">
         {% include 'partials/services.twig' %}
     </section>
 {% endblock %}

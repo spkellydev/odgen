@@ -1,7 +1,7 @@
 {% extends 'layout/main.twig' %}
 
 {% block content %}
-    <div class="insurance--travel">
+    <div class="insurance--travel" role="main">
         <section class="hero">
             <h1 class="hero--title">Travel Insurance<span class="hero--title-sub">Simple & Flexible Coverage</span></h1>
             <img src="{{ base_url() }}/assets/images/travel-insurance-services-nj.jpg" alt="Group Insurance Services">
@@ -28,5 +28,6 @@
             </article>
         </section>
         {% include 'partials/travel/benefits.twig' %}
+        <section></section>
     </div>
 {% endblock %}

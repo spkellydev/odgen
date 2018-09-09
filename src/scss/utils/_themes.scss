@@ -65,3 +65,11 @@ p {
     border-bottom: $pico solid currentColor;
   }
 }
+
+a.primary--link {
+  display: inline-block;
+  color: $black;
+  background: $white;
+  padding: $pico;
+  font-size: $lg;
+}

@@ -47,7 +47,7 @@
 
       a.gray {
         &:first-child {
-          border-right: 1px solid mix($gray-2, white, 20%);
+          border-right: 1px solid mix($gray-2, white, 50%);
         }
 
         padding: $xs;

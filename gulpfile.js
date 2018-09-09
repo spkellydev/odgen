@@ -84,8 +84,22 @@ gulp.task("sassdoc", function() {
 gulp.task("js", function() {
   return gulp
     .src("src/js/app.js")
-    .pipe(babel({ presets: ["env"] }))
-    .pipe(uglify())
+    .pipe(
+      babel({
+        minified: true,
+        comments: false,
+        presets: [
+          [
+            "env",
+            {
+              targets: {
+                browsers: ["last 8 versions"]
+              }
+            }
+          ]
+        ]
+      })
+    )
     .pipe(gulp.dest("public/assets/js"));
 });
 

@@ -22,10 +22,6 @@ class TwigFactory extends Factory
     public static function loader()
     {
         return function ($c) {
-            // $view = new Twig(__DIR__ . '/../../templates/', [
-            //     'cache' => __DIR__ . '/../../cache/',
-            // ]);
-
             $view = new Twig(__DIR__ . '/../../templates/');
 
             $router = $c->get('router');

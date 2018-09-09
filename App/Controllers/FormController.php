@@ -27,25 +27,23 @@ class FormController extends Validatable
      */
     public function create(Request $request, Response $response)
     {
-        if ($this->checkCSRFToken($request->getParam('token'))) {
-            $submission = new Form;
-            $submission->fname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('fname') : false;
-            $submission->lname = $this->checkStringAsName($request->getParam('lname')) ? $request->getParam('lname') : false;
-            $submission->email = $this->checkEmail($request->getParam('email')) ? $request->getParam('email') : false;
-            $submission->age = $this->checkIntRange($request->getParam('age'), 18, 90) ? $request->getParam('age') : false;
-            $submission->smoker = $this->checkBoolean($request->getParam('smoker')) ? $request->getParam('smoker') : null;
-            $submission->zip = $this->checkValidZipCode($request->getParam('zip')) ? $request->getParam('zip') : false;
-            $submission->company = $this->checkStringAsName($request->getParam('company')) ? $request->getParam('company') : '';
 
-            if ($this->validateSubmission($submission)) {
-                $submission->save();
-                return $response->withJson(['status' => 'success', 'code' => 200], 200);
-            } else {
-                return $response->withJson(['status' => 'error', 'code' => 422, 'submission' => $submission], 422);
-            }
+        $submission = new Form;
+        $submission->fname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('fname') : false;
+        $submission->lname = $this->checkStringAsName($request->getParam('lname')) ? $request->getParam('lname') : false;
+        $submission->email = $this->checkEmail($request->getParam('email')) ? $request->getParam('email') : false;
+        $submission->age = $this->checkIntRange($request->getParam('age'), 18, 90) ? $request->getParam('age') : false;
+        $submission->smoker = $this->checkBoolean($request->getParam('smoker')) ? $request->getParam('smoker') : null;
+        $submission->zip = $this->checkValidZipCode($request->getParam('zip')) ? $request->getParam('zip') : false;
+        $submission->company = $this->checkStringAsName($request->getParam('company')) ? $request->getParam('company') : '';
+
+        if ($this->validateSubmission($submission)) {
+            $submission->save();
+            return $response->withJson(['status' => 'success', 'code' => 200], 200);
         } else {
-            return $response->withJson(['status' => 'error', 'code' => 401, 'submission' => 'no token'], 401);
+            return $response->withJson(['status' => 'error', 'code' => 422, 'submission' => $submission], 422);
         }
+
     }
 
     /**

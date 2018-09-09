@@ -93,6 +93,7 @@ class Bootstrap
         $this->app->get('/insurance/group', 'InsuranceController:group');
         $this->app->get('/insurance/travel', 'InsuranceController:travel');
 
+        $this->app->get('/api/request', 'FormController:index');
         $this->app->post('/api/create', 'FormController:create');
     }
 
@@ -109,6 +110,11 @@ class Bootstrap
         };
     }
 
+    /**
+     * load controllers into app containers
+     * @TODO autoload
+     * @return void
+     */
     protected function controllers()
     {
         $container = $this->app->getContainer();
@@ -154,12 +160,19 @@ class Bootstrap
         $this->config = $config;
     }
 
+    /**
+     * Set application wide headers
+     * Example: CORS
+     * @return void
+     */
     protected function headers()
     {
+        // add options for all available routes
         $this->app->options('/{routes:.+}', function ($request, $response, $args) {
             return $response;
         });
 
+        // enable CORS
         $this->app->add(function ($req, $res, $next) {
             $response = $next($req, $res);
             return $response

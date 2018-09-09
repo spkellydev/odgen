@@ -44,7 +44,7 @@ class Validatable
      */
     public function checkBoolean($bool)
     {
-        return filter_var($bool, FILTER_VALIDATE_BOOLEAN);
+        return !is_null(filter_var($bool, FILTER_VALIDATE_BOOLEAN));
     }
 
     /**

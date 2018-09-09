@@ -17,11 +17,12 @@ class Api {
 
   post(path) {
     let data = {
-      fname: "Sean",
-      lname: "Kellr",
+      fname: "Molly",
+      lname: "Daddono",
       age: "26",
-      smoker: true,
+      smoker: false,
       email: "spkelld@gmail.com",
+      zip: "07712",
       token: this.token
     };
 

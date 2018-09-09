@@ -28,9 +28,13 @@ class FormController extends Validatable
         // ]);
     }
 
+    /**
+     * create row in forms table
+     * @return string
+     */
     public function create(Request $request, Response $response)
     {
-        if ($this->checkCSRFToken($_SESSION['token'])) {
+        if ($this->checkCSRFToken($request->getParam('token'))) {
             $submission = new Form;
             $submission->fname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('fname') : false;
             $submission->lname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('lname') : false;
@@ -39,7 +43,7 @@ class FormController extends Validatable
             $submission->smoker = $this->checkBoolean($request->getParam('smoker')) ? $request->getParam('smoker') : null;
             $submission->zip = $this->checkValidZipCode($request->getParam('zip')) ? $request->getParam('zip') : false;
 
-            if ($submission->fname && $submission->lname && $submission->email && $submission->age && $submission->zip && !is_null($submission->smoker)) {
+            if ($this->validateSubmission($submission)) {
                 $submission->save();
                 echo '{"success": {"text": "Submission received"}';
             } else {
@@ -49,5 +53,18 @@ class FormController extends Validatable
             echo '{"error": {"text": "no token"}';
         }
 
+    }
+
+    /**
+     * Ensure that all submission variables are validated
+     * @return void
+     */
+    private function validateSubmission($submission)
+    {
+        if ($submission->fname && $submission->lname && $submission->email && $submission->age && $submission->zip && !is_null($submission->smoker)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

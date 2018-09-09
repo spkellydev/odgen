@@ -9,6 +9,16 @@ ul.list-links {
     &:not(:last-child) > a::after {
       content: "|";
       padding: $xs;
+      color: currentColor;
+      transition: none;
+    }
+
+    > a {
+      transition: all 0.5s ease;
+
+      &:hover {
+        font-size: $lg;
+      }
     }
   }
 

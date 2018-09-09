@@ -3,6 +3,10 @@
 namespace App\Factories;
 
 use App\Factory;
+use Slim\Http\Environment;
+use Slim\Http\Uri;
+use Slim\Views\Twig;
+use Slim\Views\TwigExtension;
 
 class TwigFactory extends Factory
 {
@@ -15,20 +19,18 @@ class TwigFactory extends Factory
      * Loads the Twig Environment
      * @param bool $cache -- if true, application will cache templates
      */
-    public static function loader(bool $cache = false)
+    public static function loader()
     {
         return function ($c) {
-            if ($cache) {
-                $view = new \Slim\Views\Twig(__DIR__ . '/../../templates/', [
-                    'cache' => __DIR__ . '/../../cache/',
-                ]);
-            } else {
-                $view = new \Slim\Views\Twig(__DIR__ . '/../../templates/');
-            }
+            // $view = new Twig(__DIR__ . '/../../templates/', [
+            //     'cache' => __DIR__ . '/../../cache/',
+            // ]);
+
+            $view = new Twig(__DIR__ . '/../../templates/');
 
             $router = $c->get('router');
-            $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
-            $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
+            $uri = Uri::createFromEnvironment(new Environment($_SERVER));
+            $view->addExtension(new TwigExtension($router, $uri));
 
             return $view;
         };

@@ -28,7 +28,9 @@ class PageController
 
     public function contact(Request $request, Response $response, $args)
     {
-        return $this->c['view']->render($response, 'pages/Contact.twig');
+        return $this->c['view']->render($response, 'pages/Contact.twig', [
+            'token' => $_SESSION['token'],
+        ]);
     }
 
     public function privacy(Request $request, Response $response, $args)

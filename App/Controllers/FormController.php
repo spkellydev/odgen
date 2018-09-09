@@ -50,7 +50,7 @@ class FormController extends Validatable
 
     /**
      * Ensure that all submission variables are validated
-     * @return void
+     * @return bool
      */
     private function validateSubmission($submission)
     {

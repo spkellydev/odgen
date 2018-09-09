@@ -7,7 +7,7 @@ use App\Controllers\InsuranceController;
 use App\Controllers\PageController;
 use App\Factories\HttpFactory;
 use App\Factories\TwigFactory;
-use Slim;
+use Slim\App;
 use \Illuminate\Database\Capsule\Manager;
 
 class Bootstrap
@@ -26,7 +26,7 @@ class Bootstrap
     public function __construct()
     {
         $this->config();
-        $this->app = new \Slim\App([
+        $this->app = new App([
             'settings' => $this->config['slim'],
         ]);
 

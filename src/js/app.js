@@ -11,20 +11,14 @@ class Api {
     }
   }
 
+  // get unmarshalled response
   get(path) {
     return fetch(this.url + path).then(response => response.json());
   }
 
+  // post to path, assumes #form
   post(path) {
-    let data = {
-      fname: "Molly",
-      lname: "Daddono",
-      age: "26",
-      smoker: false,
-      email: "spkelld@gmail.com",
-      zip: "07712",
-      token: this.token
-    };
+    let data = this.serializeForm();
 
     return fetch(this.url + path, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -40,13 +34,52 @@ class Api {
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     }).then(response => response.json());
   }
+
+  // convert formdata to object
+  serializeForm() {
+    let inputs = this.form.elements;
+    let values = {};
+
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].name) {
+        // handle checkboxes
+        if (inputs[i].type === "checkbox") {
+          values[inputs[i].name] = inputs[i].checked ? true : false;
+        } else {
+          values[inputs[i].name] = inputs[i].value;
+        }
+      }
+    }
+
+    return values;
+  }
+
+  clearForm() {
+    let inputs = this.form.elements;
+
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].name) {
+        inputs[i].value = "";
+      }
+    }
+  }
 }
 
 let api = new Api("http://localhost:8080");
-api.form.addEventListener("submit", e => {
-  e.preventDefault();
-  api
-    .post("/api/create")
-    .then(response => console.log("Success:", JSON.stringify(response)))
-    .catch(error => console.error("Error:", error));
-});
+
+if (api.form) {
+  api.form.addEventListener("submit", e => {
+    e.preventDefault();
+    api
+      .post("/api/create")
+      .then(response => {
+        api.clearForm();
+        if (response.code === 200) {
+          window.location = "/thank-you";
+        } else {
+          console.log("something went wrong");
+        }
+      })
+      .catch(error => console.error("Error:", error));
+  });
+}

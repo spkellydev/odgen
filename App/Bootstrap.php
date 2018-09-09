@@ -86,6 +86,7 @@ class Bootstrap
         $this->app->get('/about', 'PageController:about');
         $this->app->get('/contact', 'PageController:contact');
         $this->app->get('/privacy-policy', 'PageController:privacy');
+        $this->app->get('/thank-you', 'PageController:thankYou');
         $this->app->get('/404', 'PageController:notFound');
 
         $this->app->get('/insurance', 'InsuranceController:index');

@@ -36,6 +36,11 @@ class PageController
         return $this->c['view']->render($response, 'pages/Privacy.twig');
     }
 
+    public function thankYou(Request $request, Response $response, $args)
+    {
+        return $this->c['view']->render($response, 'pages/ThankYou.twig');
+    }
+
     public function notFound(Request $request, Response $response, $args)
     {
         return $this->c['view']->render($response, 'pages/NotFound.twig');

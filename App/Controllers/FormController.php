@@ -45,14 +45,13 @@ class FormController extends Validatable
 
             if ($this->validateSubmission($submission)) {
                 $submission->save();
-                echo '{"success": {"text": "Submission received"}';
+                return $response->withJson(['status' => 'success', 'code' => 200], 200);
             } else {
-                echo '{"error": {"text": ' . $submission . '}';
+                return $response->withJson(['status' => 'error', 'code' => 422, 'submission' => $submission], 422);
             }
         } else {
-            echo '{"error": {"text": "no token"}';
+            return $response->withJson(['status' => 'error', 'code' => 401, 'submission' => 'no token'], 401);
         }
-
     }
 
     /**

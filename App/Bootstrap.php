@@ -50,6 +50,7 @@ class Bootstrap
         $this->capsule->bootEloquent();
 
         $this->db();
+        $this->headers();
         $this->controllers();
         $this->twig();
         $this->routes();
@@ -151,5 +152,21 @@ class Bootstrap
         }
 
         $this->config = $config;
+    }
+
+    protected function headers()
+    {
+        $this->app->options('/{routes:.+}', function ($request, $response, $args) {
+            return $response;
+        });
+
+        $this->app->add(function ($req, $res, $next) {
+            $response = $next($req, $res);
+            return $response
+                ->withHeader('Access-Control-Allow-Origin', '*')
+                ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+                ->withHeader('Access-Control-Allow-Methods', 'GET, POST');
+        });
+
     }
 }

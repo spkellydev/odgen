@@ -30,7 +30,7 @@ class FormController extends Validatable
 
     public function create(Request $request, Response $response)
     {
-        if ($this->checkCSRFToken($request->token)) {
+        if ($this->checkCSRFToken($_SESSION['token'])) {
             $submission = new Form;
             $submission->fname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('fname') : false;
             $submission->lname = $this->checkStringAsName($request->getParam('fname')) ? $request->getParam('lname') : false;

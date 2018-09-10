@@ -4,7 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Ogden Insurance & Consulting | Shrewsbury, New Jersey</title>
+        {% if noindex == true %}
+            <meta name="robots" content="noindex,follow"/>
+        {% endif %}
+        <title>{{ title |default("Ogden Insurance & Consulting | Shrewsbury, New Jersey") }}</title>
+        <meta name="description" content="{{ desc }}">
         <link href="{{ base_url() }}/assets/css/main.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Mukta{{ '|'|url_encode }}Noto+Serif+JP" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ base_url() }}/assets/favicon/apple-touch-icon.png">

@@ -13,6 +13,8 @@ CREATE TABLE `forms` (
  `smoker` bool NOT NULL,
  
  `zip` varchar(250) NOT NULL,
+
+ `company` varchar(250),
  
  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
  

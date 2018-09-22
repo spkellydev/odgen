@@ -26,3 +26,26 @@ ul.list-links {
     display: none;
   }
 }
+
+.ul-none {
+  ul {
+    list-style: none;
+  }
+
+  h4 {
+    padding-bottom: $pico;
+  }
+
+  li {
+    padding-top: $pico;
+  }
+
+  &--child {
+    margin-bottom: $base;
+    padding: $nano;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid mix($blue, transparent, 30%);
+    border-bottom: none;
+  }
+}

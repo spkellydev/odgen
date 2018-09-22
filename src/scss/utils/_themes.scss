@@ -17,6 +17,10 @@ p {
 
 .text-center {
   text-align: center;
+
+  p {
+    text-align: center;
+  }
 }
 
 .lead {
@@ -72,4 +76,12 @@ a.primary--link {
   background: $white;
   padding: $pico;
   font-size: $lg;
+}
+
+.logo {
+  svg {
+    position: relative;
+    width: 50px;
+    top: 20px;
+  }
 }

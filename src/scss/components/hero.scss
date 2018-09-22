@@ -49,6 +49,27 @@
     }
   }
 
+  &--title-secondary {
+    position: absolute;
+    top: 15%;
+    left: 34%;
+    color: $gray;
+    text-shadow: $pico $pico $blue-bright;
+    border-bottom: $pico solid $blue-bright;
+
+    @media only screen and (max-width: 440px) {
+      top: 5%;
+      left: 10%;
+      font-size: $xl-3;
+    }
+
+    @media only screen and (max-width: 720px) {
+      top: 5%;
+      left: 25%;
+      font-size: $xl-4;
+    }
+  }
+
   &--title-alternative {
     position: absolute;
     top: 15%;
@@ -72,6 +93,12 @@
 
   img {
     max-height: 65vh;
+    object-fit: cover;
+    object-position: bottom;
+  }
+
+  &.secondary img {
+    max-height: 45vh;
     object-fit: cover;
     object-position: bottom;
   }
